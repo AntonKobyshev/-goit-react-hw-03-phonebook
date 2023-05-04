@@ -6,6 +6,8 @@ import { Title, Subtitle, Container } from './App.styled';
 import initialContacts from '../data/contacts';
 import { AiFillContacts, AiFillBook } from 'react-icons/ai';
 
+const LS_KEY = 'contacts';
+
 export class App extends React.Component {
   state = {
     contacts: initialContacts,
@@ -14,14 +16,26 @@ export class App extends React.Component {
     number: '',
   };
 
-  addContact = data => {
+  componentDidMount() {
+    const dataNumbers = localStorage.getItem(LS_KEY);
+
+    if (dataNumbers) {
+      this.setState({ contacts: JSON.parse(dataNumbers) });
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
+  }
+
+
+
+   addContact = data => {
     this.setState(({ contacts }) =>
       contacts.find(contact => contact.name.toLowerCase().trim() ===
           data.name.toLowerCase().trim() )
         ? alert(`The name ${data.name} is already in contacts`)
-        : { contacts: [data, ...contacts] }
-        ||
-        contacts.find(contact => contact.number.trim() === data.number.trim() )
+        : contacts.find(contact => contact.number.trim() === data.number.trim() )
         ? alert(`The number ${data.number} is already in contacts`)
         : { contacts: [data, ...contacts] }
         
