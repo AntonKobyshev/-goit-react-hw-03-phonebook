@@ -28,8 +28,6 @@ export class App extends React.Component {
     localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
   }
 
-
-
    addContact = data => {
     this.setState(({ contacts }) =>
       contacts.find(contact => contact.name.toLowerCase().trim() ===
