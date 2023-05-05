@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ebf5fc;
+  background-color: #c0cddb;
 }
 
 code {
@@ -31,9 +31,9 @@ img {
 }
 
 :root {
-  --accent: #51968d;
+  --accent: #386b3c;
   --primary: #080808;
-  --secondary: #858585;
+  --secondary: #494848;
   --bg: #ebf5fc;
   --main-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
   --inset-shadow: inset -2px -2px 5px #ffffff,
