@@ -30,10 +30,10 @@ export class App extends React.Component {
   };
 
   componentDidMount() {
-    const dataNumbers = localStorage.getItem(LS_KEY);
+    const data = localStorage.getItem(LS_KEY);
 
-    if (dataNumbers) {
-      this.setState({ contacts: JSON.parse(dataNumbers) });
+    if (data) {
+      this.setState({ contacts: JSON.parse(data) });
     }
   }
 
