@@ -5,6 +5,19 @@ import { Filter } from './Filter/Filter';
 import { Title, Subtitle, Container } from './App.styled';
 import initialContacts from '../data/contacts';
 import { AiFillContacts, AiFillBook } from 'react-icons/ai';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notifyOptions = {
+  position: 'top-right',
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'colored',
+};
 
 const LS_KEY = 'contacts';
 
@@ -32,9 +45,9 @@ export class App extends React.Component {
     this.setState(({ contacts }) =>
       contacts.find(contact => contact.name.toLowerCase().trim() ===
           data.name.toLowerCase().trim() )
-        ? alert(`The name ${data.name} is already in contacts`)
+        ? toast.error(`The name ${data.name} is already in contacts`, notifyOptions)
         : contacts.find(contact => contact.number.trim() === data.number.trim() )
-        ? alert(`The number ${data.number} is already in contacts`)
+        ? toast.error(`The number ${data.number} is already in contacts`, notifyOptions)
         : { contacts: [data, ...contacts] }
         
     );
@@ -59,6 +72,7 @@ export class App extends React.Component {
     );
 
     return (
+      
       <Container>
         <Title>
           <AiFillBook size="36" />
@@ -75,6 +89,7 @@ export class App extends React.Component {
           deleteContact={this.deleteContact}
           contacts={filteredContacts}
         />
+        <ToastContainer />
       </Container>
     );
   }
