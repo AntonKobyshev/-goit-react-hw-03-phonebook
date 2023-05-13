@@ -1,4 +1,4 @@
-# Стан подій та форми | goit-react-hw-01-phonebook
+# Стан подій та форми | goit-react-hw-03-phonebook
 
 ## Критерії приймання
 
